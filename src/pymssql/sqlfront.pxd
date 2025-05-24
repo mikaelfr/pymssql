@@ -770,6 +770,7 @@ cdef extern from "sqlfront.h":
     RETCODE DBSETLDBNAME(LOGINREC *x, char *y)
     RETCODE DBSETLENCRYPT(LOGINREC *login, int x)
     RETCODE DBSETLREADONLY(LOGINREC *login, int x)
+    RETCODE DBSETLPACKET(LOGINREC *login, int x)
 
 
 cdef extern from "syberror.h":
