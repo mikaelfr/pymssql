@@ -209,7 +209,7 @@ def connect(
     tds_version: str | None = None,
     use_datetime2=False,
     arraysize: int = 1,
-    conn_args: dict[str, str] | None = None,
+    conn_args: dict[str, Any] | None = None,
 ) -> Connection:
     """
     Constructor for creating a connection to the database. Returns a
@@ -249,6 +249,8 @@ def connect(
         with .fetchmany(). It defaults to 1 meaning to fetch a single row at a time.
         Default value: 1.
     :type arraysize: int
+    :keyword conn_args: Additional options to control the underlying FreeTDS driver.
+                        Currently supports 'packet_size' to restrict the sizes of TDS packets.
     """
     ...
 

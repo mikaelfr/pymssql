@@ -627,6 +627,8 @@ def connect(server='.', user=None, password=None, database='', timeout=0,
         with .fetchmany(). It defaults to 1 meaning to fetch a single row at a time.
         Default value: 1.
     :type arraysize: int
+    :keyword conn_args: Additional options to control the underlying FreeTDS driver.
+                        Currently supports 'packet_size' to restrict the sizes of TDS packets.
     """
 
     # set the login timeout

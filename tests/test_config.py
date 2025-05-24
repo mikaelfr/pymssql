@@ -111,3 +111,14 @@ class TestConfig(object):
         #it should convert it to a string
         config_dump = self.connect(port=1435)
         assert 'port = 1435' in config_dump
+
+    @pytest.mark.slow
+    def test_config_packet_size(self):
+        config_dump = self.connect(
+            server='dontnameyourserverthis',
+            user = 'bob',
+            database = 'tempdb',
+            tds_version='7.1',
+            conn_args={"packet_size": 497},
+        )
+        assert "block_size = 497" in config_dump
