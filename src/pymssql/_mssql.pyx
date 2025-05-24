@@ -612,7 +612,8 @@ cdef class MSSQLConnection:
                         charset='UTF-8', database='', appname=None, port='1433',
                         tds_version=None, encryption=None, read_only=False,
                         use_datetime2=False,
-                        conn_properties=None):
+                        conn_properties=None,
+                        conn_args=None):
         log("_mssql.MSSQLConnection.__init__()")
 
         cdef LOGINREC *login
@@ -697,6 +698,11 @@ cdef class MSSQLConnection:
         # Set the login timeout
         # XXX: Currently this will set it application wide :-(
         dbsetlogintime(login_timeout)
+
+        # Set user defined connection args
+        if conn_args is not None:
+            if "packet_size" in conn_args:
+                DBSETLPACKET(login, conn_args["packet_size"])
 
         # Connect to the server
         with nogil:

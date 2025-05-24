@@ -588,7 +588,7 @@ def connect(server='.', user=None, password=None, database='', timeout=0,
         host='', appname=None, port='1433', encryption=None, read_only=False,
         conn_properties=None, autocommit=False, tds_version=None,
         use_datetime2=False,
-        arraysize=1):
+        arraysize=1, conn_args=None):
     """
     Constructor for creating a connection to the database. Returns a
     Connection object.
@@ -653,7 +653,8 @@ def connect(server='.', user=None, password=None, database='', timeout=0,
                               appname=appname, port=port, tds_version=tds_version,
                               read_only=read_only,
                               use_datetime2=use_datetime2,
-                              conn_properties=conn_properties)
+                              conn_properties=conn_properties,
+                              conn_args=conn_args)
 
     except _mssql.MSSQLDatabaseException, e:
         raise OperationalError(e.args[0])

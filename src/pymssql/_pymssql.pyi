@@ -209,6 +209,7 @@ def connect(
     tds_version: str | None = None,
     use_datetime2=False,
     arraysize: int = 1,
+    conn_args: dict[str, str] | None = None,
 ) -> Connection:
     """
     Constructor for creating a connection to the database. Returns a
